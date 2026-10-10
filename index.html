@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>স্মার্ট ছুটির আবেদনপত্র</title>
+    <title>স্মার্ট ছুটি | বেসিক এআই ব্যাচ ০২</title>
     
-    <!-- Tailwind CSS for styling -->
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📝</text></svg>">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Galada&family=Hind+Siliguri:wght@300;400;500;600;700&family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Galada&family=Hind+Siliguri:wght@300;400;500;600;700;800&family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
     
     <!-- html2pdf.js & Cropper.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -38,22 +41,31 @@
         .fade-in { animation: fadeIn 0.3s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
-        .nav-active { color: #4f46e5 !important; font-weight: 700; background-color: #e0e7ff; border-radius: 0.5rem; }
+        .nav-active { color: #ffffff !important; font-weight: 700; background-color: rgba(255, 255, 255, 0.2); border-radius: 0.5rem; }
         .bottom-nav-active { color: #4f46e5 !important; }
     </style>
 </head>
 <body class="text-gray-800 h-screen flex flex-col overflow-hidden pb-16 sm:pb-0">
 
-    <header class="bg-indigo-600 text-white shadow-md p-3 sm:p-4 sticky top-0 z-10 no-print flex-shrink-0">
+    <!-- Top Navigation Header with Branding -->
+    <header class="bg-gradient-to-r from-indigo-700 to-indigo-900 text-white shadow-lg p-3 sm:p-4 sticky top-0 z-20 no-print flex-shrink-0 border-b border-indigo-500">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-xl sm:text-2xl font-bold flex items-center gap-2">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                স্মার্ট ছুটি
-            </h1>
+            <div class="flex items-center gap-3">
+                <div class="bg-white/10 p-2 rounded-lg border border-white/20 shadow-inner">
+                    <svg class="w-6 h-6 text-indigo-100" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                </div>
+                <div class="flex flex-col">
+                    <h1 class="text-xl sm:text-2xl font-extrabold leading-tight tracking-tight">স্মার্ট ছুটি</h1>
+                    <span class="text-[10px] sm:text-xs font-semibold text-indigo-200 uppercase tracking-widest mt-0.5 flex items-center gap-1">
+                        <svg class="w-3 h-3 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path></svg>
+                        বেসিক এআই • ব্যাচ ২
+                    </span>
+                </div>
+            </div>
             <div class="hidden sm:flex gap-2">
-                <button onclick="navigate('profile')" id="nav-desktop-profile" class="px-4 py-2 text-indigo-100 hover:text-white hover:bg-indigo-500 rounded-lg transition text-sm font-medium">প্রোফাইল</button>
-                <button onclick="navigate('main')" id="nav-desktop-main" class="px-4 py-2 text-indigo-100 hover:text-white hover:bg-indigo-500 rounded-lg transition text-sm font-medium">নতুন আবেদন</button>
-                <button onclick="navigate('tracker')" id="nav-desktop-tracker" class="px-4 py-2 text-indigo-100 hover:text-white hover:bg-indigo-500 rounded-lg transition text-sm font-medium">ট্র্যাকার</button>
+                <button onclick="navigate('profile')" id="nav-desktop-profile" class="px-4 py-2 text-indigo-100 hover:text-white hover:bg-white/10 rounded-lg transition text-sm font-medium">প্রোফাইল</button>
+                <button onclick="navigate('main')" id="nav-desktop-main" class="px-4 py-2 text-indigo-100 hover:text-white hover:bg-white/10 rounded-lg transition text-sm font-medium">নতুন আবেদন</button>
+                <button onclick="navigate('tracker')" id="nav-desktop-tracker" class="px-4 py-2 text-indigo-100 hover:text-white hover:bg-white/10 rounded-lg transition text-sm font-medium">ট্র্যাকার</button>
             </div>
         </div>
     </header>
@@ -61,11 +73,28 @@
     <div class="flex-grow overflow-hidden relative">
         <!-- Screen 1: Profile -->
         <div id="profileScreen" class="h-full overflow-y-auto p-4 fade-in hidden">
-            <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden mb-4">
-                <div class="bg-indigo-50 p-6 text-center border-b border-indigo-100">
-                    <h2 class="text-2xl font-bold text-indigo-700">আপনার প্রোফাইল</h2>
-                    <p class="text-slate-500 mt-2 text-sm">তথ্যগুলো সেভ করে রাখলে বারবার লিখতে হবে না।</p>
+            <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden mb-4">
+                
+                <!-- Premium Branded Profile Banner -->
+                <div class="relative bg-gradient-to-br from-indigo-600 to-purple-700 p-8 text-center overflow-hidden border-b border-indigo-200">
+                    <!-- AI Watermark / Sparkle Background -->
+                    <svg class="absolute right-0 top-0 w-64 h-64 text-white opacity-5 transform translate-x-12 -translate-y-12 rotate-12" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2ZM12 5.8L10.7 9.3L7.2 10.6L10.7 11.9L12 15.4L13.3 11.9L16.8 10.6L13.3 9.3L12 5.8Z"/>
+                    </svg>
+                    <svg class="absolute left-0 bottom-0 w-32 h-32 text-white opacity-10 transform -translate-x-10 translate-y-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" stroke-width="2"></circle><path stroke-width="2" stroke-linecap="round" d="M12 8v8m-4-4h8"></path>
+                    </svg>
+                    
+                    <div class="relative z-10">
+                        <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs font-bold px-4 py-1.5 rounded-full mb-4 shadow-sm">
+                            <svg class="w-4 h-4 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                            বেসিক এআই প্রশিক্ষণ • ব্যাচ ০২
+                        </div>
+                        <h2 class="text-3xl font-extrabold text-white mb-2 tracking-tight drop-shadow-md">আপনার প্রোফাইল</h2>
+                        <p class="text-indigo-100 text-sm font-medium">একবার তথ্যগুলো সেভ করে রাখলে বারবার লিখতে হবে না</p>
+                    </div>
                 </div>
+                
                 <div class="p-6 sm:p-8 space-y-6">
                     <div>
                         <h3 class="text-lg font-semibold text-slate-700 border-b pb-2 mb-4">অফিস / প্রতিষ্ঠানের তথ্য</h3>
@@ -184,8 +213,12 @@
             </div>
             
             <!-- Credit Section -->
-            <div class="text-center mt-6 mb-20 sm:mb-8 text-sm text-slate-500 no-print">
-                Developed with ❤️ by <a href="https://www.facebook.com/NaeemNajom" target="_blank" rel="noopener noreferrer" class="font-bold text-indigo-600 hover:text-indigo-800 hover:underline transition">Najmuzzaman Naeem</a>
+            <div class="text-center mt-6 mb-20 sm:mb-8 text-sm text-slate-500 no-print flex flex-col items-center justify-center gap-1">
+                <span class="inline-flex items-center gap-1 bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs font-bold mb-1">
+                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    বেসিক এআই • ব্যাচ ২ এক্সক্লুসিভ
+                </span>
+                <p>Developed with ❤️ by <a href="https://www.facebook.com/NaeemNajom" target="_blank" rel="noopener noreferrer" class="font-bold text-indigo-600 hover:text-indigo-800 hover:underline transition">Najmuzzaman Naeem</a></p>
             </div>
         </div>
 
@@ -251,8 +284,12 @@
                         </div>
                     </form>
                     
-                    <div class="mt-auto pt-8 pb-2 text-center text-xs sm:text-sm text-slate-500 no-print">
-                        Developed with ❤️ by <a href="https://www.facebook.com/NaeemNajom" target="_blank" rel="noopener noreferrer" class="font-bold text-indigo-600 hover:text-indigo-800 hover:underline transition">Najmuzzaman Naeem</a>
+                    <div class="mt-auto pt-8 pb-2 text-center text-xs sm:text-sm text-slate-500 no-print flex flex-col items-center justify-center gap-1">
+                        <span class="inline-flex items-center gap-1 bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs font-bold mb-1">
+                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            বেসিক এআই • ব্যাচ ২ এক্সক্লুসিভ
+                        </span>
+                        <p>Developed with ❤️ by <a href="https://www.facebook.com/NaeemNajom" target="_blank" rel="noopener noreferrer" class="font-bold text-indigo-600 hover:text-indigo-800 hover:underline transition">Najmuzzaman Naeem</a></p>
                     </div>
                 </div>
 
@@ -349,8 +386,12 @@
                 </div>
             </div>
             
-            <div class="text-center mt-6 mb-24 sm:mb-8 text-sm text-slate-500 no-print">
-                Developed with ❤️ by <a href="https://www.facebook.com/NaeemNajom" target="_blank" rel="noopener noreferrer" class="font-bold text-indigo-600 hover:text-indigo-800 hover:underline transition">Najmuzzaman Naeem</a>
+            <div class="text-center mt-6 mb-24 sm:mb-8 text-sm text-slate-500 no-print flex flex-col items-center justify-center gap-1">
+                <span class="inline-flex items-center gap-1 bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs font-bold mb-1">
+                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    বেসিক এআই • ব্যাচ ২ এক্সক্লুসিভ
+                </span>
+                <p>Developed with ❤️ by <a href="https://www.facebook.com/NaeemNajom" target="_blank" rel="noopener noreferrer" class="font-bold text-indigo-600 hover:text-indigo-800 hover:underline transition">Najmuzzaman Naeem</a></p>
             </div>
         </div>
     </div>
